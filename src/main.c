@@ -18,7 +18,6 @@
  * 8. Call the game's original entry point (recompiled)
  *
  * Customize this file for your game:
- *   - Set YOUR_GAME_ENTRY_POINT to the XBE entry point address
  *   - Set YOUR_GAME_XBE_PATH to where the XBE file lives
  *   - Set YOUR_GAME_DIR to the game data directory
  *   - Add any CRT global pre-initialization your game needs
@@ -28,7 +27,7 @@
  *   Title:       BLiNX: the time sweeper
  *   Title ID:    0x4D530013
  *   Base addr:   0x00010000
- *   Entry point: 0x000F362A
+ *   NTSC-U v6 entry point: 0x000F362A
  *   Code size:   ~??? KB (.text)
  *   Sections:    ?? (list them)
  *   Kernel imports: ??
@@ -123,7 +122,6 @@ extern ptrdiff_t g_xbox_mem_offset;
  * (the game files) and RECOMP_HDD_DIR (the emulated hard disk) instead, and
  * those win (host_main, step 2).
  */
-#define YOUR_GAME_ENTRY_POINT   0x000F362A  /* XBE entry point VA */
 #define YOUR_GAME_XBE_PATH      "game_files/default.xbe"
 #define YOUR_GAME_DIR            "game_files"
 
@@ -890,7 +888,7 @@ static int host_main(void)
      */
 
     printf("\n=== Initialization complete ===\n");
-    printf("Entry point: 0x%08X\n", YOUR_GAME_ENTRY_POINT);
+    puts("Entry point: xbe_entry_point");
     printf("ESP: 0x%08X\n", g_esp);
 
     /* Build the flat dispatch table before the guest runs.
